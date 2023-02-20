@@ -1,8 +1,10 @@
 import { useState, ChangeEvent } from 'react';
+import { useModel } from '@modern-js/runtime/model';
 import { Outlet, useNavigate } from '@modern-js/runtime/router';
 import axios from 'axios';
 import { Avatar, Button, Form, Input, Modal, Typography, message } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+// import { UserOutlined } from '@ant-design/icons';
+import user from '../models/user';
 import './[search]/index.scss';
 
 type LoginData = {
@@ -21,6 +23,7 @@ const Header: React.FC = () => {
   );
   const [searchInputValue, setSearchInputValue] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [{ avatar }, { setName, setAvatar }] = useModel(user);
 
   const showModal = () => {
     // console.info(localStorage.getItem('token'));
@@ -49,6 +52,8 @@ const Header: React.FC = () => {
       },
     }).then(res => {
       // console.info(res.data);
+      setName(res.data.name);
+      setAvatar(res.data.avatar);
       localStorage.setItem('token', res.data.token);
       messageApi.success('Login Success');
       setIsUserLogin(true);
@@ -73,6 +78,9 @@ const Header: React.FC = () => {
   };
 
   const logout = () => {
+    setAvatar(
+      'https://p3-passport.byteimg.com/img/mosaic-legacy/3793/3114521287~100x100.awebp',
+    );
     localStorage.clear();
     setIsUserLogin(false);
     messageApi.info('Logout Success');
@@ -167,15 +175,7 @@ const Header: React.FC = () => {
             </Modal>
           </div>
           <div className="avatar-container">
-            {isUserLogin ? (
-              <Avatar
-                onClick={logout}
-                size={42}
-                src="https://s3.bmp.ovh/imgs/2023/02/19/dcef2bd09376cc71.jpg"
-              />
-            ) : (
-              <Avatar onClick={logout} size={42} icon={<UserOutlined />} />
-            )}
+            <Avatar onClick={logout} size={42} src={avatar} />
           </div>
         </div>
       </header>

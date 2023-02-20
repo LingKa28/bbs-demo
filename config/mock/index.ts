@@ -107,6 +107,8 @@ export default {
         state: 200,
         msg: 'login success',
         token: faker.datatype.uuid(),
+        name: 'Ying',
+        avatar: 'https://s3.bmp.ovh/imgs/2023/02/19/dcef2bd09376cc71.jpg',
       }),
     );
   },

@@ -1,9 +1,11 @@
 import React, { useState, useEffect, BaseSyntheticEvent } from 'react';
+import { useModel } from '@modern-js/runtime/model';
 import { useParams } from '@modern-js/runtime/router';
 import axios from 'axios';
 import { Avatar, Input, List, Space, Typography } from 'antd';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 import Display from '../../../components/Editor/display';
+import user from '../../../models/user';
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -34,6 +36,7 @@ const ArticleDetail = () => {
   const [reviewData, setReviewData] = useState<ReviewData>([]);
   const { id } = useParams();
   const [, setEditor] = useState();
+  const [{ avatar }] = useModel(user);
 
   const getReviewData = () => {
     axios
@@ -124,11 +127,7 @@ const ArticleDetail = () => {
               Reviews
             </Title>
             <div style={{ display: 'flex' }}>
-              <Avatar
-                style={{ marginRight: '16px' }}
-                size={54}
-                src="https://s3.bmp.ovh/imgs/2023/02/19/dcef2bd09376cc71.jpg"
-              />
+              <Avatar style={{ marginRight: '16px' }} size={54} src={avatar} />
               <TextArea
                 style={{ minHeight: '80px', width: '550px' }}
                 placeholder="Enter comments (Press enter to send)"
