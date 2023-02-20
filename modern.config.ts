@@ -5,6 +5,7 @@ import testPlugin from '@modern-js/plugin-testing';
 export default defineConfig({
   runtime: {
     router: true,
+    state: true,
   },
   plugins: [appTools(), testPlugin()],
 });
