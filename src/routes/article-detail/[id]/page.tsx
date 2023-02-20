@@ -79,6 +79,7 @@ const ArticleDetail = () => {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
       data: {
+        articleId: id,
         comment: e.target.value,
       },
     });
