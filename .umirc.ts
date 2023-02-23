@@ -7,7 +7,8 @@ export default defineConfig({
   initialState: {},
   request: {},
   layout: {
-    title: '@umijs/max',
+    title: 'BBS Demo',
+    locale: false,
   },
   routes: [
     {
