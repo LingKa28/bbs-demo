@@ -35,6 +35,7 @@
     "prettier-plugin-organize-imports": "^2",
     "prettier-plugin-packagejson": "^2",
     "ts-node": "^10",
-    "typescript": "^4"
+    "typescript": "^4",
+    "tailwindcss": "^3"
   }
 }
