@@ -19,6 +19,7 @@
     "react-infinite-scroll-component": "^6.1.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@testing-library/jest-dom": "^5",
     "@testing-library/react": "^13",
     "@types/jest": "^29",
