@@ -25,4 +25,25 @@ export default defineMock({
       );
     }, 2000);
   },
+
+  'POST /api/article/add': (_req, res) => {
+    res.end(
+      JSON.stringify({
+        code: 1,
+        success: true,
+        msg: 'add article comment success',
+      }),
+    );
+  },
+
+  'POST /api/article/addCover': (_req, res) => {
+    res.end(
+      JSON.stringify({
+        code: 1,
+        success: true,
+        msg: 'add article cover success',
+        url: faker.image.imageUrl(),
+      }),
+    );
+  },
 });

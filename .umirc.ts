@@ -21,9 +21,9 @@ export default defineConfig({
       component: "./Home",
     },
     {
-      name: "权限演示",
-      path: "/access",
-      component: "./Access",
+      name: "编辑",
+      path: "/edit",
+      component: "./Edit",
     },
     {
       name: " CRUD 示例",
