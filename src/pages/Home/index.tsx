@@ -131,11 +131,7 @@ const HomePage: React.FC = () => {
                 >
                   <List.Item.Meta
                     avatar={<Avatar src={item.avatar} />}
-                    title={
-                      <Link to={`/article-detail/${item.id}`}>
-                        {item.title}
-                      </Link>
-                    }
+                    title={<Link to={`/detail/${item.id}`}>{item.title}</Link>}
                     description={item.userName}
                   />
                   {item.description}
