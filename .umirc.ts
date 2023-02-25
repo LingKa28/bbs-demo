@@ -1,4 +1,4 @@
-import { defineConfig } from "@umijs/max";
+import { defineConfig } from '@umijs/max';
 
 export default defineConfig({
   antd: {},
@@ -7,31 +7,31 @@ export default defineConfig({
   initialState: {},
   request: {},
   layout: {
-    title: "BBS Demo",
+    title: 'BBS Demo',
     locale: false,
   },
   routes: [
     {
-      path: "/",
-      redirect: "/home",
+      path: '/',
+      redirect: '/home',
     },
     {
-      name: "首页",
-      path: "/home",
-      component: "./Home",
+      name: '首页',
+      path: '/home',
+      component: './Home',
     },
     {
-      name: "编辑",
-      path: "/edit",
-      component: "./Edit",
+      name: '编辑',
+      path: '/edit',
+      component: './Edit',
     },
     {
-      name: " CRUD 示例",
-      path: "/table",
-      component: "./Table",
+      name: '详情',
+      path: '/detail/:id',
+      component: './Detail',
     },
   ],
 
-  npmClient: "yarn",
+  npmClient: 'yarn',
   tailwindcss: {},
 });

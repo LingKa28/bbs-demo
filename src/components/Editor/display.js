@@ -464,7 +464,7 @@ function MyCustomAutoFocusPlugin() {
   return null;
 }
 
-export default function Editor({ onChange }) {
+export default function Display() {
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container" style={{ border: 'none' }}>
@@ -477,7 +477,7 @@ export default function Editor({ onChange }) {
           />
           <HistoryPlugin />
           <MyCustomAutoFocusPlugin />
-          <OnChangePlugin onChange={onChange} />
+          {/* <OnChangePlugin onChange={onChange} /> */}
           {/* <TreeViewPlugin /> */}
           <AutoFocusPlugin />
           <CodeHighlightPlugin />

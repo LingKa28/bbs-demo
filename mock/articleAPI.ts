@@ -26,6 +26,41 @@ export default defineMock({
     }, 2000);
   },
 
+  '/api/article/detail': (_req, res) => {
+    const articleDetailData = {
+      title: faker.lorem.words(3),
+      img: faker.image.cats(640, 400, true),
+      content: '',
+    };
+
+    res.end(
+      JSON.stringify({
+        code: 1,
+        success: true,
+        data: articleDetailData,
+      }),
+    );
+  },
+
+  '/api/article/comment/list': (_req, res) => {
+    const articleCommentList = Array.from({ length: 5 }).map(() => ({
+      avatar: faker.image.avatar(),
+      userName: faker.internet.userName(),
+      content: faker.lorem.paragraph(1),
+      likes: faker.datatype.number({ min: 10, max: 999 }),
+      collections: faker.datatype.number({ min: 10, max: 99 }),
+      comments: faker.datatype.number({ min: 1, max: 9 }),
+    }));
+
+    res.end(
+      JSON.stringify({
+        code: 1,
+        success: true,
+        data: articleCommentList,
+      }),
+    );
+  },
+
   'POST /api/article/add': (_req, res) => {
     res.end(
       JSON.stringify({
@@ -43,6 +78,16 @@ export default defineMock({
         success: true,
         msg: 'add article cover success',
         url: faker.image.imageUrl(),
+      }),
+    );
+  },
+
+  'POST /api/article/comment/add': (_req, res) => {
+    res.end(
+      JSON.stringify({
+        code: 1,
+        success: true,
+        msg: 'add article comment success',
       }),
     );
   },
