@@ -4,7 +4,7 @@ import { Avatar, Divider, List, Menu, Skeleton, Space } from 'antd';
 import type { MenuProps } from 'antd';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import getArticleList from '@/services/article';
+import { getArticleList } from '@/services/article/ArticleController';
 
 type ArticleListData = Array<{
   id: string;
