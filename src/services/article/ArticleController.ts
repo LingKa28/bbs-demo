@@ -5,13 +5,6 @@ export async function getArticleDetail(id: string): Promise<any> {
     params: { id },
   });
 }
-// export async function getArticleDetail(id: string): Promise<any> {
-//   const articleDetailData = await request('/api/article/detail', {
-//     params: { id },
-//   });
-//   console.log(articleDetailData);
-//   return articleDetailData;
-// }
 
 export async function getArticleCommentsList(id: string) {
   return request('/api/article/comment/list', {
@@ -26,4 +19,26 @@ export async function addArticleComment(id: string, comment: string) {
   });
   console.log(msg);
   return msg;
+}
+
+export default async function addArticle(
+  title: string,
+  description: string,
+  cover: string,
+  editor: any,
+) {
+  return request('/api/article/add', {
+    method: 'POST',
+    headers: {
+      accept: '*/*',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    data: {
+      title,
+      description,
+      cover,
+      editor,
+    },
+  });
 }

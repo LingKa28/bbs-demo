@@ -5,7 +5,7 @@ import type { RcFile, UploadProps } from 'antd/es/upload';
 import type { UploadFile } from 'antd/es/upload/interface';
 // @ts-ignore
 import Editor from '@/components/Editor/Editor.js';
-import addArticle from '@/services/article/addArticle';
+import addArticle from '@/services/article/ArticleController';
 
 const { TextArea } = Input;
 
