@@ -1,5 +1,5 @@
 import React, { useState, useEffect, BaseSyntheticEvent } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useModel } from '@umijs/max';
 import { Avatar, Input, List, Space, Typography } from 'antd';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 // @ts-ignore
@@ -35,6 +35,7 @@ type ReviewData = Array<{
 }>;
 
 const ArticleDetail = () => {
+  const { initialState } = useModel('@@initialState');
   const [articleData, setArticleData] = useState<ArticleDetailData>({});
   const [commentData, setCommentData] = useState<ReviewData>([]);
   const { id } = useParams();
@@ -76,7 +77,7 @@ const ArticleDetail = () => {
               <Avatar
                 className="flex-none mr-5"
                 size={54}
-                src="https://p3-passport.byteimg.com/img/mosaic-legacy/3793/3114521287~100x100.awebp"
+                src={initialState?.avatar}
               />
               <TextArea
                 placeholder="Enter comments (Press enter to send)"
