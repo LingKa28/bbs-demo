@@ -24,7 +24,7 @@ const uploadButton = (
   </div>
 );
 
-const DetailPage = () => {
+const EditPage = () => {
   const [editor, setEditor] = useState();
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [previewImage, setPreviewImage] = useState('');
@@ -42,7 +42,7 @@ const DetailPage = () => {
       values.description,
       values.cover?.file.response.url,
       editor,
-    )
+    );
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -142,4 +142,4 @@ const DetailPage = () => {
   );
 };
 
-export default DetailPage;
+export default EditPage;
