@@ -123,7 +123,7 @@ const EditPage = () => {
           <Button
             style={{ width: '250px' }}
             size="large"
-            type="primary"
+            type="default"
             htmlType="submit"
           >
             Submit
