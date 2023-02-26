@@ -13,6 +13,7 @@ export const layout: RunTimeLayoutConfig = () => {
   return {
     logo: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
     layout: 'top',
+    pure: true,
     fixedHeader: true,
     menu: {
       locale: false,
