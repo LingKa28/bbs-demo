@@ -1,20 +1,29 @@
-const users = [
-  { id: 0, name: 'Umi', nickName: 'U', gender: 'MALE' },
-  { id: 1, name: 'Fish', nickName: 'B', gender: 'FEMALE' },
-];
+import { defineMock } from 'umi';
+import { faker } from '@faker-js/faker';
 
-export default {
-  'GET /api/v1/queryUserList': (req: any, res: any) => {
-    res.json({
-      success: true,
-      data: { list: users },
-      errorCode: 0,
-    });
+export default defineMock({
+  'POST /api/user/getUerInfo': (_req, res) => {
+    const userInfo = {
+      userName: faker.internet.userName(),
+      avatar: faker.image.avatar(),
+    };
+
+    res.end(
+      JSON.stringify({
+        code: 1,
+        success: true,
+        data: userInfo,
+      }),
+    );
   },
-  'PUT /api/v1/user/': (req: any, res: any) => {
-    res.json({
-      success: true,
-      errorCode: 0,
-    });
+
+  'POST /api/user/login': (_req, res) => {
+    res.end(
+      JSON.stringify({
+        code: 1,
+        success: true,
+        token: faker.datatype.uuid(),
+      }),
+    );
   },
-};
+});
