@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useRequest } from '@umijs/max';
+import { Link, useRequest, useParams } from '@umijs/max';
 import { Avatar, Divider, List, Menu, Skeleton, Space } from 'antd';
 import type { MenuProps } from 'antd';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
@@ -41,13 +41,16 @@ const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
 );
 
 const HomePage: React.FC = () => {
+  const { searchQuery } = useParams();
   const [menuCurrent, setMenuCurrent] = useState('recommend');
   const [articleListData, setArticleListData] = useState<ArticleListData>([]);
+  const [isPageFirstShow, setIsPageFirstShow] = useState<boolean>(true);
 
   const { loading, run } = useRequest(
     () => {
       return getArticleList({
         menuCurrent,
+        searchQuery,
         size: 10,
         target: articleListData.length,
       });
@@ -63,7 +66,15 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     run();
+    setIsPageFirstShow(false);
   }, []);
+
+  useEffect(() => {
+    if (!isPageFirstShow) {
+      setArticleListData([]);
+      run();
+    }
+  }, [searchQuery]);
 
   const loadMoreData = () => {
     console.log(loading);
