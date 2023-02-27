@@ -40,6 +40,11 @@ export async function addArticleComment(
 ): Promise<ArticleAPI.Response> {
   const msg = await request('/api/article/comment/add', {
     method: 'POST',
+    headers: {
+      accept: '*/*',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
     data: { id, comment },
   });
   console.log(msg);
